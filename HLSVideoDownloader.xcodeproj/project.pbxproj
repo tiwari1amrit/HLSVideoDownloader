@@ -11,9 +11,21 @@
 		F0265A7E21E5FD7200FF7553 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0265A7D21E5FD7200FF7553 /* ViewController.swift */; };
 		F0265A8121E5FD7200FF7553 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0265A7F21E5FD7200FF7553 /* Main.storyboard */; };
 		F0265A8321E5FD7400FF7553 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0265A8221E5FD7400FF7553 /* Assets.xcassets */; };
-		F0265A8621E5FD7400FF7553 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0265A8421E5FD7400FF7553 /* LaunchScreen.storyboard */; };
 		F0265A9121E5FD7400FF7553 /* HLSVideoDownloaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0265A9021E5FD7400FF7553 /* HLSVideoDownloaderTests.swift */; };
 		F0265A9C21E5FD7400FF7553 /* HLSVideoDownloaderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0265A9B21E5FD7400FF7553 /* HLSVideoDownloaderUITests.swift */; };
+		F0265AAB21E5FDFE00FF7553 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0265AA921E5FDFE00FF7553 /* LaunchScreen.storyboard */; };
+		F0265AB021E5FE4800FF7553 /* AssetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0265AAD21E5FE4800FF7553 /* AssetStore.swift */; };
+		F0265AB121E5FE4800FF7553 /* DownloadSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0265AAE21E5FE4800FF7553 /* DownloadSessionManager.swift */; };
+		F0265AB221E5FE4800FF7553 /* HLSion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0265AAF21E5FE4800FF7553 /* HLSion.swift */; };
+		F0265AB421E5FE7A00FF7553 /* VideoPlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0265AB321E5FE7A00FF7553 /* VideoPlayerVC.swift */; };
+		F0D0395F21E60161006B71B9 /* ATPlayerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D0395721E60160006B71B9 /* ATPlayerUtils.swift */; };
+		F0D0396021E60161006B71B9 /* ATVideoPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0D0395821E60160006B71B9 /* ATVideoPlayerView.xib */; };
+		F0D0396121E60161006B71B9 /* ATVideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D0395921E60160006B71B9 /* ATVideoPlayerView.swift */; };
+		F0D0396221E60161006B71B9 /* VideoControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0D0395A21E60160006B71B9 /* VideoControlView.xib */; };
+		F0D0396321E60161006B71B9 /* ATPlayerImage.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0D0395B21E60161006B71B9 /* ATPlayerImage.xcassets */; };
+		F0D0396421E60161006B71B9 /* TimeFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D0395C21E60161006B71B9 /* TimeFormat.swift */; };
+		F0D0396521E60161006B71B9 /* ATPlayerSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D0395D21E60161006B71B9 /* ATPlayerSlider.swift */; };
+		F0D0396621E60161006B71B9 /* VideoControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D0395E21E60161006B71B9 /* VideoControlView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +51,6 @@
 		F0265A7D21E5FD7200FF7553 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F0265A8021E5FD7200FF7553 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F0265A8221E5FD7400FF7553 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F0265A8521E5FD7400FF7553 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F0265A8721E5FD7400FF7553 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0265A8C21E5FD7400FF7553 /* HLSVideoDownloaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HLSVideoDownloaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0265A9021E5FD7400FF7553 /* HLSVideoDownloaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HLSVideoDownloaderTests.swift; sourceTree = "<group>"; };
@@ -47,6 +58,19 @@
 		F0265A9721E5FD7400FF7553 /* HLSVideoDownloaderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HLSVideoDownloaderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0265A9B21E5FD7400FF7553 /* HLSVideoDownloaderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HLSVideoDownloaderUITests.swift; sourceTree = "<group>"; };
 		F0265A9D21E5FD7400FF7553 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0265AAA21E5FDFE00FF7553 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F0265AAD21E5FE4800FF7553 /* AssetStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetStore.swift; sourceTree = "<group>"; };
+		F0265AAE21E5FE4800FF7553 /* DownloadSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadSessionManager.swift; sourceTree = "<group>"; };
+		F0265AAF21E5FE4800FF7553 /* HLSion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HLSion.swift; sourceTree = "<group>"; };
+		F0265AB321E5FE7A00FF7553 /* VideoPlayerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerVC.swift; sourceTree = "<group>"; };
+		F0D0395721E60160006B71B9 /* ATPlayerUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATPlayerUtils.swift; sourceTree = "<group>"; };
+		F0D0395821E60160006B71B9 /* ATVideoPlayerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ATVideoPlayerView.xib; sourceTree = "<group>"; };
+		F0D0395921E60160006B71B9 /* ATVideoPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATVideoPlayerView.swift; sourceTree = "<group>"; };
+		F0D0395A21E60160006B71B9 /* VideoControlView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoControlView.xib; sourceTree = "<group>"; };
+		F0D0395B21E60161006B71B9 /* ATPlayerImage.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ATPlayerImage.xcassets; sourceTree = "<group>"; };
+		F0D0395C21E60161006B71B9 /* TimeFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeFormat.swift; sourceTree = "<group>"; };
+		F0D0395D21E60161006B71B9 /* ATPlayerSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATPlayerSlider.swift; sourceTree = "<group>"; };
+		F0D0395E21E60161006B71B9 /* VideoControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoControlView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,11 +122,13 @@
 			isa = PBXGroup;
 			children = (
 				F0265A7B21E5FD7200FF7553 /* AppDelegate.swift */,
+				F0265AAC21E5FE3400FF7553 /* Resource */,
 				F0265A7D21E5FD7200FF7553 /* ViewController.swift */,
+				F0265AB321E5FE7A00FF7553 /* VideoPlayerVC.swift */,
 				F0265A7F21E5FD7200FF7553 /* Main.storyboard */,
 				F0265A8221E5FD7400FF7553 /* Assets.xcassets */,
-				F0265A8421E5FD7400FF7553 /* LaunchScreen.storyboard */,
 				F0265A8721E5FD7400FF7553 /* Info.plist */,
+				F0265AA921E5FDFE00FF7553 /* LaunchScreen.storyboard */,
 			);
 			path = HLSVideoDownloader;
 			sourceTree = "<group>";
@@ -123,6 +149,32 @@
 				F0265A9D21E5FD7400FF7553 /* Info.plist */,
 			);
 			path = HLSVideoDownloaderUITests;
+			sourceTree = "<group>";
+		};
+		F0265AAC21E5FE3400FF7553 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				F0265AAD21E5FE4800FF7553 /* AssetStore.swift */,
+				F0265AAE21E5FE4800FF7553 /* DownloadSessionManager.swift */,
+				F0265AAF21E5FE4800FF7553 /* HLSion.swift */,
+				F0D0395621E60148006B71B9 /* Player */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		F0D0395621E60148006B71B9 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				F0D0395B21E60161006B71B9 /* ATPlayerImage.xcassets */,
+				F0D0395D21E60161006B71B9 /* ATPlayerSlider.swift */,
+				F0D0395721E60160006B71B9 /* ATPlayerUtils.swift */,
+				F0D0395921E60160006B71B9 /* ATVideoPlayerView.swift */,
+				F0D0395821E60160006B71B9 /* ATVideoPlayerView.xib */,
+				F0D0395C21E60161006B71B9 /* TimeFormat.swift */,
+				F0D0395E21E60161006B71B9 /* VideoControlView.swift */,
+				F0D0395A21E60160006B71B9 /* VideoControlView.xib */,
+			);
+			path = Player;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,8 +281,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0265A8621E5FD7400FF7553 /* LaunchScreen.storyboard in Resources */,
+				F0265AAB21E5FDFE00FF7553 /* LaunchScreen.storyboard in Resources */,
+				F0D0396221E60161006B71B9 /* VideoControlView.xib in Resources */,
 				F0265A8321E5FD7400FF7553 /* Assets.xcassets in Resources */,
+				F0D0396321E60161006B71B9 /* ATPlayerImage.xcassets in Resources */,
+				F0D0396021E60161006B71B9 /* ATVideoPlayerView.xib in Resources */,
 				F0265A8121E5FD7200FF7553 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,8 +311,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0265AB221E5FE4800FF7553 /* HLSion.swift in Sources */,
+				F0D0395F21E60161006B71B9 /* ATPlayerUtils.swift in Sources */,
 				F0265A7E21E5FD7200FF7553 /* ViewController.swift in Sources */,
 				F0265A7C21E5FD7200FF7553 /* AppDelegate.swift in Sources */,
+				F0265AB121E5FE4800FF7553 /* DownloadSessionManager.swift in Sources */,
+				F0265AB021E5FE4800FF7553 /* AssetStore.swift in Sources */,
+				F0D0396421E60161006B71B9 /* TimeFormat.swift in Sources */,
+				F0D0396121E60161006B71B9 /* ATVideoPlayerView.swift in Sources */,
+				F0D0396621E60161006B71B9 /* VideoControlView.swift in Sources */,
+				F0D0396521E60161006B71B9 /* ATPlayerSlider.swift in Sources */,
+				F0265AB421E5FE7A00FF7553 /* VideoPlayerVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,10 +365,10 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		F0265A8421E5FD7400FF7553 /* LaunchScreen.storyboard */ = {
+		F0265AA921E5FDFE00FF7553 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				F0265A8521E5FD7400FF7553 /* Base */,
+				F0265AAA21E5FDFE00FF7553 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -435,6 +499,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B865P7W52D;
 				INFOPLIST_FILE = HLSVideoDownloader/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -453,6 +518,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B865P7W52D;
 				INFOPLIST_FILE = HLSVideoDownloader/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
