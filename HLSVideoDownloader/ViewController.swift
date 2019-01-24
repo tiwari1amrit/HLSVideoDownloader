@@ -35,9 +35,9 @@ class ViewController: UIViewController {
         
         //        let urlString = "https://mnmott.nettvnepal.com.np/test01/sample.mp4/playlist.m3u8"
         
-        let urlString = "https://mnmott.nettvnepal.com.np/test01/sample_movie.mp4/playlist.m3u8"
+//        let urlString = "https://mnmott.nettvnepal.com.np/test01/sample_movie.mp4/playlist.m3u8"
         
-//        let urlString = "https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_4x3/bipbop_4x3_variant.m3u8"
+        let urlString = "https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_4x3/bipbop_4x3_variant.m3u8"
 
         //        let urlString = "https://devimages.apple.com.edgekey.net/streaming/examples/bipbop_4x3/bipbop_4x3_variant.m3u8"
         let url = URL(string: urlString)!
@@ -85,7 +85,7 @@ class ViewController: UIViewController {
                 DispatchQueue.main.async {
                     print(percent)
                     self.progressView.isHidden = false
-                    self.progressView.progress = Float(percent)
+                    self.progressView.progress = Float(percent)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
 //                    let progressD =  String(format: "%.1f%% of %@", progress * 100, totalSize)
 //                    self.lblProgress.text = progressD
                 }

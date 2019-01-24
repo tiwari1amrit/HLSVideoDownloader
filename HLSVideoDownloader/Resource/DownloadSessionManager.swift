@@ -54,7 +54,8 @@ final internal class DownloadSessionManager: NSObject, AVAssetDownloadDelegate {
     func downloadStream(_ hlsion: HLSion) {
         guard assetExists(forName: hlsion.name) == false else { return }
         
-        guard let task = downloadSession.makeAssetDownloadTask(asset: hlsion.urlAsset, assetTitle: hlsion.name, assetArtworkData: nil, options: nil) else { return }
+        let option = [AVAssetDownloadTaskMinimumRequiredMediaBitrateKey: NSNumber(value: 0)]
+        guard let task = downloadSession.makeAssetDownloadTask(asset: hlsion.urlAsset, assetTitle: hlsion.name, assetArtworkData: nil, options: option) else { return }
         
         task.taskDescription = hlsion.name
         downloadingMap[task] = hlsion
@@ -129,14 +130,14 @@ final internal class DownloadSessionManager: NSObject, AVAssetDownloadDelegate {
                 return
             }
                         
-//            guard let hlsionName = assetDownloadTask.taskDescription else { return }
-//            let urlAsset = assetDownloadTask.urlAsset
-//            let hlsion = HLSion(asset: urlAsset, description: hlsionName)
-//            self.downloadingMap[assetDownloadTask] = hlsion
-//            assetDownloadTask.resume()
+            guard let hlsionName = assetDownloadTask.taskDescription else { return }
+            let urlAsset = assetDownloadTask.urlAsset
+            let hlsion = HLSion(asset: urlAsset, description: hlsionName)
+            self.downloadingMap[assetDownloadTask] = hlsion
+            assetDownloadTask.resume()
 //
 //
-//            print(urlString)
+            print(urlString)
             
         } else {
             hlsion.result = .success

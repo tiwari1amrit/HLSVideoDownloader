@@ -265,7 +265,7 @@ enum VideoErrorCode : Int {
     }
     
     //MARK:- Video Player
-    @objc public func playVideo(_ url : URL){
+    @objc public func playVideo(_ urls : URL){
         
         if let observer = self.observer{
             
@@ -275,37 +275,112 @@ enum VideoErrorCode : Int {
         
         self.atPlayer?.pause()
         self.removeObserverAndPlayer()
-        print(url)
+        print(urls)
 //        let urlString = "https://mnmott.nettvnepal.com.np/test01/sample.mp4/playlist.m3u8"
 //        let urls = URL(string: urlString)!
-        var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
+        var urlComponents = URLComponents(url: urls, resolvingAgainstBaseURL: false)
 //        urlComponents?.scheme = "fakehttps"
-        print(urlComponents!.url!)
         let avAsset = AVURLAsset(url: urlComponents!.url!, options: nil)
+        
         avAsset.resourceLoader.setDelegate(self, queue: DispatchQueue.global(qos: .background))
         let avplayerItem = AVPlayerItem(asset: avAsset)
         self.atPlayer = AVPlayer(playerItem: avplayerItem)//AVPlayer(url: url)
+        
+        let encriptionKey = "29080ACF01787DBF091567C49A81DDD9"
+
+        let keyFileName = "\(encriptionKey).key"
+        
+        do {
+            
+            // ***** Create key file *****
+            let keyFilePath = "ckey://\(keyFileName)"
+            
+            let fileManager = FileManager.init()
+            let subDirectories = try fileManager.contentsOfDirectory(at: urls,includingPropertiesForKeys: nil, options: .skipsSubdirectoryDescendants)
+            
+            for url in subDirectories {
+                
+                var isDirectory: ObjCBool = false
+                
+                if fileManager.fileExists(atPath: url.path, isDirectory: &isDirectory) {
+                    
+                    if isDirectory.boolValue {
+                        
+                        let path = url.path as NSString
+                        
+                        let folderName = path.lastPathComponent
+                        let playlistFilePath = path.appendingPathComponent("\(folderName).m3u8")
+                        
+                        if fileManager.fileExists(atPath: playlistFilePath) {
+                            
+                            var fileContent = try String.init(contentsOf: URL.init(fileURLWithPath: playlistFilePath))
+                            
+                            let stringArray = self.matches(for: "URI=\"(.+?)\"", in: fileContent)
+
+                            for pattern in stringArray {
+                                fileContent = fileContent.replacingOccurrences(of: pattern, with: "URI=\"\(keyFilePath)\"")
+                            }
+                            
+                            try fileContent.write(toFile: playlistFilePath, atomically: true, encoding: .utf8)
+                        }
+                        
+                        let streamInfoXML = path.appendingPathComponent("StreamInfoBoot.xml")
+                        
+                        if fileManager.fileExists(atPath: streamInfoXML) {
+                            
+                            var fileContent = try String.init(contentsOf: URL.init(fileURLWithPath: streamInfoXML))
+                            fileContent = fileContent.replacingOccurrences(of: "https:", with: "fakehttps:")
+                            try fileContent.write(toFile: streamInfoXML, atomically: true, encoding: .utf8)
+                        }
+                    } else {
+                        
+                        if url.lastPathComponent == "boot.xml" {
+                            
+                            let bootXML = url.path
+                            
+                            if fileManager.fileExists(atPath: bootXML) {
+                                
+                                var fileContent = try String.init(contentsOf: URL.init(fileURLWithPath: bootXML))
+                                fileContent = fileContent.replacingOccurrences(of: "https:", with: "fakehttps:")
+                                try fileContent.write(toFile: bootXML, atomically: true, encoding: .utf8)
+                            }
+                        }
+                    }
+                }
+            }
+            var userInfo : [String: AnyObject] = [:]
+//            userInfo[Asset.Keys.state] = Asset.State.downloaded.rawValue
 //
-//        let avplayerItem = AVPlayerItem(asset: avUrlAsset)
-////        let avplayerItem = AVPlayerItem(url: url)
-//        self.atPlayer = AVPlayer(playerItem: avplayerItem)//AVPlayer(url: url)
+//            // Update download status to db
+
+        } catch  {
+        }
+        
+        
+
+//
+////        let avplayerItem = AVPlayerItem(asset: avUrlAsset)
+//////        let avplayerItem = AVPlayerItem(url: url)
+////        self.atPlayer = AVPlayer(playerItem: avplayerItem)//AVPlayer(url: url)
+        
+        
         self.playerLayer = AVPlayerLayer(player: atPlayer!)
         self.videoPlayerView.layer.addSublayer(self.playerLayer!)
-        
+//
         self.atPlayer?.currentItem?.audioTimePitchAlgorithm = AVAudioTimePitchAlgorithm.varispeed
         self.atPlayer?.currentItem?.canUseNetworkResourcesForLiveStreamingWhilePaused = true
         self.reframeVideoPlayer()
         self.playerLayer?.backgroundColor = UIColor.black.cgColor
         self.videoControlView.lblTotalTime.text = "--:--"
-        
+
         self.btnPlayPause.layer.zPosition = 1
         self.activityIndicator.layer.zPosition = 1
         self.videoControlView.layer.zPosition = 1
         self.btnShowErrorMessage.layer.zPosition = 1
         self.btnShowErrorMessage.isHidden = true
-        
+
         self.videoControlView.isHidden = self.isHideVideoControlView ? true : false
-        
+
         self.atPlayer?.play()
         if #available(iOS 10.0, *) {
             self.atPlayer?.playImmediately(atRate: 1)
@@ -322,6 +397,19 @@ enum VideoErrorCode : Int {
         self.videoControlView.lblCurrentTime.isHidden = true
     }
     
+    
+    func matches(for regex: String, in text: String) -> [String] {
+        
+        do {
+            let regex = try NSRegularExpression(pattern: regex)
+            let nsString = text as NSString
+            let results = regex.matches(in: text, range: NSRange(location: 0, length: nsString.length))
+            return results.map { nsString.substring(with: $0.range)}
+        } catch let error {
+            print("invalid regex: \(error.localizedDescription)")
+            return []
+        }
+    }
     
     //MARK:- ***** Observer *****
     @objc public func reInitiallizeObserver(){

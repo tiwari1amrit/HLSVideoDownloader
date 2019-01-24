@@ -29,6 +29,7 @@ class VideoPlayerVC: UIViewController {
 //        let urlString = "https://mnmott.nettvnepal.com.np/test01/sample_enc.mp4"
 
 //        let localAsset = AVURLAsset(url: relativePath!)
+        
 
         self.atVideoController.playVideo(relativePath!)
     }

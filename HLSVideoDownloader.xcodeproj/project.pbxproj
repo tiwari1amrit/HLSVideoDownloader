@@ -18,6 +18,7 @@
 		F0265AB121E5FE4800FF7553 /* DownloadSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0265AAE21E5FE4800FF7553 /* DownloadSessionManager.swift */; };
 		F0265AB221E5FE4800FF7553 /* HLSion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0265AAF21E5FE4800FF7553 /* HLSion.swift */; };
 		F0265AB421E5FE7A00FF7553 /* VideoPlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0265AB321E5FE7A00FF7553 /* VideoPlayerVC.swift */; };
+		F030367121F9BB2F00A6379C /* feedback in Resources */ = {isa = PBXBuildFile; fileRef = F030367021F9BB2F00A6379C /* feedback */; };
 		F0D0395F21E60161006B71B9 /* ATPlayerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D0395721E60160006B71B9 /* ATPlayerUtils.swift */; };
 		F0D0396021E60161006B71B9 /* ATVideoPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0D0395821E60160006B71B9 /* ATVideoPlayerView.xib */; };
 		F0D0396121E60161006B71B9 /* ATVideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D0395921E60160006B71B9 /* ATVideoPlayerView.swift */; };
@@ -63,6 +64,7 @@
 		F0265AAE21E5FE4800FF7553 /* DownloadSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadSessionManager.swift; sourceTree = "<group>"; };
 		F0265AAF21E5FE4800FF7553 /* HLSion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HLSion.swift; sourceTree = "<group>"; };
 		F0265AB321E5FE7A00FF7553 /* VideoPlayerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerVC.swift; sourceTree = "<group>"; };
+		F030367021F9BB2F00A6379C /* feedback */ = {isa = PBXFileReference; lastKnownFileType = text; path = feedback; sourceTree = "<group>"; };
 		F0D0395721E60160006B71B9 /* ATPlayerUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATPlayerUtils.swift; sourceTree = "<group>"; };
 		F0D0395821E60160006B71B9 /* ATVideoPlayerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ATVideoPlayerView.xib; sourceTree = "<group>"; };
 		F0D0395921E60160006B71B9 /* ATVideoPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATVideoPlayerView.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 		F0265A6F21E5FD7200FF7553 = {
 			isa = PBXGroup;
 			children = (
+				F030367021F9BB2F00A6379C /* feedback */,
 				F0265A7A21E5FD7200FF7553 /* HLSVideoDownloader */,
 				F0265A8F21E5FD7400FF7553 /* HLSVideoDownloaderTests */,
 				F0265A9A21E5FD7400FF7553 /* HLSVideoDownloaderUITests */,
@@ -286,6 +289,7 @@
 				F0265A8321E5FD7400FF7553 /* Assets.xcassets in Resources */,
 				F0D0396321E60161006B71B9 /* ATPlayerImage.xcassets in Resources */,
 				F0D0396021E60161006B71B9 /* ATVideoPlayerView.xib in Resources */,
+				F030367121F9BB2F00A6379C /* feedback in Resources */,
 				F0265A8121E5FD7200FF7553 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,0 +1,89 @@
+
+My Observations:
+----------------
+
+- After pressing the "Download" button, your background task is actually working, except the progress bar is not showing (or better said, it is no longer updated)
+- The fact that if you wait long enough, you will eventually reach the backgroundSessionCompletionHandler shows me that the background task still actually runs in the background (which is good)
+- however, as you correctly pointed out, things start to break if you resume
+
+Clarification:
+--------------
+
+- before I continue explaining, please let me point out that there are two ways of "resume":
+1. resume (Type-1) after your app went into background (for example if home-button is pressed one-time on your iphone or if you start another app)
+2. resume (Type-2) after app re-start. (i.e. to find those download-tasks that you need to resume, you need to persist the TaskURL before app closing and restore it at app-restarting)
+(I think, this you did correctly, even tough I am not the expert in how you persisted the taskURL.... I normally use Realm, CoreData or NSUserDefaults for the persistance)
+
+The strange behaviour observed:
+-------------------------------
+
+- In fact, if I place a breakpoint inside "didLoad timeRange:" delegate callback, everything works !!!!! Which is very strange
+(I have not figured out yet, why everything seem to work once you set a breakpoint inside your AVAssetDownloadURLSession didLoad delegate)
+- A second fact: if I place a breakpoint inside "applicationWillEnterForeground" (inside AppDelegate.swift), than again everything works !!!
+
+--> It must have to do with startup-behaviour or lifecycle of your App (please see a workarround solution further down...)
+
+But first, a Bug found:
+-----------------------
+- inside ViewController, in the case .notDownloaded: There you make a strong 'self' = self but you never use 'self', instead you still use self. So the guard statement is irrelevant in your case. (Please use 'self' instead of self inside your .notDownloaded case)
+such as.....
+`self`.progressView.isHidden = false
+`self`.progressView.progress = Float(percent)
+instead of....
+self.progressView.isHidden = false
+self.progressView.progress = Float(percent)
+
+
+THE WORKARROUND SOLUTION (for resume-Type-1)
+--------------------------------------------
+
+- I found a way how your resume (Type 1) works: Please place "sleep(1)" into "applicationWillEnterForeground" (inside AppDelegate.swift)
+After that, your resume works.
+- now, I am absolutely insecure why this helps in the first place. Normally, this should not be necessary and I don't quite understand why my workarround helps (but at least it helps :))
+- as for resume (Type 2) i.e. after App close and re-open: I unfortunately do not have a solution for you :(
+(it is important to notice that for a Task-resume Type-2, your download-server needs to allow such a resume ! In fact, I had problems myself at one point with a service-provider. I could not get the resume after an app-relaunch to work and I needed to change the provider (with another server configuration). So please make sure to check the Server settings of your download-URL whether is allows resume or not.
+i.e. have you checked that "https://mnmott.nettvnepal.com.np" allows resume ??? Maybe change the server once and try another file from somewhere else to see if this is an issue...)
+- other than that I am sorry that I cannot help for the resume Type-2. Below is some more information that I've found for this topic. Maybe it helps you to find a solution.
+
+
+
+A few things to consider:
+-------------------------
+
+- Please not that closing the app by double-tapping the home-button on your iPhone and stripping-up your App to close it - this will kill any running task of the App (unfortunately including background taks). This can be read here in more detail:
+https://stackoverflow.com/questions/41379493/will-download-resume-after-closing-my-app-in-background-mode
+
+- however, stopping your app in XCode (i.e. by pressing the stop-button) does not stop your background-taks from working. (it seems that the stop button is not the same thing as a user closing the app with the home-button double-click and swipe-up)
+
+- A side note (not important here but still intersting to know): the time your app will download stuff in the background is approximately 10 min maximum. In fact, Apple does not tell in precise numbers how long your app is allowed to download stuff in the background. iOS decides itself on the ressources you get and can shut down your background-taks if it well pleases. It seems that Apple is not very clear on that and there seems to be nothing we can do to get a more clear information on what is happening exactly during background downloads.
+
+- one more thing I am not 100% sure if you really need the following: But eventually make sure you allow Background fetch: Under Target-->Capabilities-->Background Modes: select the "Background fetch" tag
+(I know for a file download it is necessary - I am not sure as for AVAssetDownloadURLSession since I never worked with this type of URLSession...)
+
+
+Some other helpful information aspects concerning AVAssetDownloadURLSession
+----------------------------------------------------------------------------
+(for all of them, I am not really sure if at all necessary or optional in your case, I just found these and thought I share this with you as well... You might already be familiar with some of them anyway...)
+
+- At app start, when URLSession is created, it is important to note that if an URLSession still exists from a previous download (i.e. running in the background), then your session-configuration (URLSessionConfiguration.background(withIdentifier:...) doesn't create a brand new URLSession object but rather returns the existing one with the old delegate object attached!
+--> therefore it is a good idea to create your DownloadSessionManager as a singleton object (...and this way, keep the delegate alive as long as the App runs and not loosing it with a silly segue or other)
+(this consideration you have fully achieved in your code !)
+
+- it can't work under the Simulator but only on actual device (no idea why..)
+https://stackoverflow.com/questions/47433810/error-while-implementing-avassetdownloadurlsession-to-download-hls-stream
+
+- set AVAssetDownloadTaskMinimumRequiredMediaBitrateKey
+https://forums.developer.apple.com/thread/92541
+
+- set timeoutIntervalForResource
+https://forums.developer.apple.com/thread/79021
+
+- set the Operation queue to main
+(i.e. downloadSession = AVAssetDownloadURLSession(configuration: configuration, assetDownloadDelegate: self, delegateQueue: OperationQueue.main)
+https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/MediaPlaybackGuide/Contents/Resources/en.lproj/HTTPLiveStreaming/HTTPLiveStreaming.html
+
+
+Helpful Articles
+----------------
+
+- article: https://williamboles.me/keeping-things-going-when-the-user-leaves-with-urlsession-and-background-transfers/
